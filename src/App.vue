@@ -1,19 +1,13 @@
 <template>
-  <ul>
-    <book-item v-for='book in storedBooks'
-               :key='book.id'
-               :title='book.title'
-               :description='book.description'
-               :link='book.link'
-    ></book-item>
-  </ul>
+  <the-header title='Books'></the-header>
+  <stored-books :books='storedBooks'></stored-books>
 </template>
 
 <script>
-import BookItem from '@/components/BookItems/BookItem.vue';
-
+import StoredBooks from '@/components/BookItems/StoredBooks.vue';
+import TheHeader from '@/components/layouts/TheHeader.vue';
 export default {
-  components: { BookItem },
+  components: { TheHeader, StoredBooks },
   data() {
     return {
       storedBooks: [
@@ -34,3 +28,19 @@ export default {
   }
 };
 </script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Roboto', sans-serif;
+  }
+
+  body {
+  margin: 0;
+  }
+</style>
