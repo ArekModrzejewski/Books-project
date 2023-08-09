@@ -1,31 +1,14 @@
 <template>
   <the-header title='Books'></the-header>
-  <stored-books :books='storedBooks'></stored-books>
+  <the-books></the-books>
 </template>
 
 <script>
-import StoredBooks from '@/components/BookItems/StoredBooks.vue';
+
 import TheHeader from '@/components/layouts/TheHeader.vue';
+import TheBooks from '@/components/BookItems/TheBooks.vue';
 export default {
-  components: { TheHeader, StoredBooks },
-  data() {
-    return {
-      storedBooks: [
-        {
-          id: 'first-book',
-          title: 'First Book',
-          description: 'The first added book.',
-          link: 'https://vuejs.org'
-        },
-        {
-          id: 'second-book',
-          title: 'Second Book',
-          description: 'The second added book.',
-          link: 'https://vuejs.org'
-        }
-      ]
-    };
-  }
+  components: { TheHeader, TheBooks }
 };
 </script>
 

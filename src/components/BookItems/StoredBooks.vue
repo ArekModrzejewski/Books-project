@@ -12,7 +12,7 @@
 import BookItem from '@/components/BookItems/BookItem.vue';
 
 export default {
-  props: ['books'],
+  inject: ['books'],
   components: {
     BookItem
   }
