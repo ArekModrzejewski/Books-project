@@ -1,17 +1,17 @@
 <template>
   <base-card>
-    <form>
+    <form @submit.prevent='submitData'>
       <div class='form-control'>
         <label for='title'>Title</label>
-        <input id='title' name='title' type='text'>
+        <input id='title' name='title' type='text' ref='titleInput'>
       </div>
       <div class='form-control'>
         <label for='title'>Description</label>
-        <textarea id='description' name='description' rows='3'></textarea>
+        <textarea id='description' name='description' rows='3' ref='descInput'></textarea>
       </div>
       <div class='form-control'>
         <label for='title'>Link</label>
-        <input id='link' name='link' type='url'>
+        <input id='link' name='link' type='url' ref='linkInput'>
       </div>
       <div>
         <base-button type='submit'>Add Book</base-button>
@@ -19,9 +19,20 @@
     </form>
   </base-card>
 </template>
-<script setup>
+<script>
+export default {
+  inject: ['addBook'],
+  methods: {
+    submitData() {
+      const enteredTitle = this.$refs.titleInput.value;
+      const enteredDesc = this.$refs.descInput.value;
+      const enteredLink = this.$refs.linkInput.value;
 
-import BaseButton from '@/components/UI/BaseButton.vue';
+      this.addBook(enteredTitle, enteredDesc, enteredLink);
+    }
+  }
+}
+
 </script>
 
 <style scoped>

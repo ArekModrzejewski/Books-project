@@ -3,7 +3,9 @@
     <base-button @click='setSelectedTab("stored-books")' :mode='storedBookButtonMode' >Stored Books</base-button>
     <base-button @click='setSelectedTab("add-books")' :mode='addBookButtonMode'>Add Book</base-button>
   </base-card>
-  <component :is='selectedTab'></component>
+  <keep-alive>
+    <component :is='selectedTab'></component>
+  </keep-alive>
 </template>
 
 <script>
@@ -32,7 +34,8 @@ export default {
   },
   provide() {
     return {
-      books: this.storedBooks
+      books: this.storedBooks,
+      addBook: this.addBook
     }
   },
   computed: {
@@ -46,6 +49,16 @@ export default {
   methods: {
     setSelectedTab(tab) {
       this.selectedTab = tab;
+    },
+    addBook(title, description, url) {
+      const newBook = {
+        id: new Date().toISOString(),
+        title: title,
+        description: description,
+        link: url
+      }
+      this.storedBooks.unshift(newBook);
+      this.selectedTab = 'stored-books';
     }
   }
 }
