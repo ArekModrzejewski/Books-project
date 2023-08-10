@@ -35,7 +35,8 @@ export default {
   provide() {
     return {
       books: this.storedBooks,
-      addBook: this.addBook
+      addBook: this.addBook,
+      removeBook: this.removeBook
     }
   },
   computed: {
@@ -59,6 +60,10 @@ export default {
       }
       this.storedBooks.unshift(newBook);
       this.selectedTab = 'stored-books';
+    },
+    removeBook(bookId) {
+      const bookIndex = this.storedBooks.findIndex(book => book.id === bookId);
+      this.storedBooks.splice(bookIndex, 1);
     }
   }
 }

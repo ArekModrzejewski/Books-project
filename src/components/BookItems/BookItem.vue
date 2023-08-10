@@ -3,7 +3,7 @@
     <base-card>
       <header>
         <h3>{{title}}</h3>
-        <base-button mode='flat'>Delete</base-button>
+        <base-button mode='flat' @click='removeBook(id)'>Delete</base-button>
       </header>
       <p>{{description}}</p>
       <nav>
@@ -18,7 +18,8 @@ import BaseCard from '@/components/UI/BaseCard.vue';
 import BaseButton from '@/components/UI/BaseButton.vue';
 export default {
   components: { BaseCard, BaseButton },
-  props: ['title', 'description', 'link']
+  props: ['title', 'description', 'link', 'id'],
+  inject: ['removeBook']
   }
 </script>
 

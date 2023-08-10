@@ -5,6 +5,7 @@
                :title='book.title'
                :description='book.description'
                :link='book.link'
+               :id='book.id'
     ></book-item>
   </ul>
 </template>
